@@ -47,4 +47,28 @@ router.post('/notes', (req, res) => {
     })
 })
 
+router.delete('/notes/:id', (req, res) => {
+   const id = req.params.id
+
+   if(!id) {
+    res.status(400).json({ error: "We need an id"})
+    return
+  }
+
+  fs.readFile(path.join(__dirname, "..", "db", "db.json"), "utf-8", function(err, data) {
+    const notes = JSON.parse(data)
+    const updatedNotes = notes.filter(note => id != note.id)
+
+    fs.writeFile(path.join(__dirname, "..", "db", "db.json"), JSON.stringify(updatedNotes), function(err) {
+        if (err) {
+            res.status(500).json(err)
+            return
+        }
+        res.json(updatedNotes)
+    })
+  })
+
+  console.log("Delete note route!")
+})
+
 module.exports = router
