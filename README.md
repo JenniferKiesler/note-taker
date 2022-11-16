@@ -12,6 +12,10 @@ This application uses an [Express.js](https://expressjs.com/) back end and will 
 
 ## Visuals
 
+![New Note Screenshot](/images/new-note-screenshot.png)
+
+![Existing Note Screenshot](/images/existing-note-screenshot.png)
+
 ## Deployed Link
 
 https://shielded-tor-96208.herokuapp.com/
